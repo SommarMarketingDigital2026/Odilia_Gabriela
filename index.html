@@ -1,71 +1,132 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Logistics that works as hard as you do.</title>
-<meta name="description" content="One point of contact and full supply-chain visibility, origin to destination.">
-<link rel="preload" as="video" type="video/mp4" href="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261005_115944_095d91d4-030f-4e82-b42b-a388c0816d24.mp4">
+<title>GC&amp;V Comércio Exterior | Assessoria e Despacho Aduaneiro</title>
+<meta name="description" content="Assessoria aduaneira, despacho aduaneiro e desembaraço de importação e exportação. Conectando negócios ao mercado internacional.">
+<meta name="theme-color" content="#101F35">
+<meta property="og:title" content="GC&amp;V Comércio Exterior">
+<meta property="og:description" content="Soluções em assessoria aduaneira, despacho aduaneiro e desembaraço de importação e exportação.">
+<meta property="og:image" content="assets/hero-poster.jpg">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preload" as="video" type="video/mp4" href="assets/hero.mp4">
 <style>
-@font-face {
-  font-family: "Display";
-  font-style: normal;
-  font-weight: 800;
-  font-display: block;
-  ascent-override: 99.9%;
-  descent-override: 20.1%;
-  line-gap-override: 0%;
-  src: local("Oswald ExtraBold"), local("Oswald-ExtraBold"), local("Bebas Neue"), local("BebasNeue"), local("Impact"), local("Arial Narrow"), local("Arial");
-}
-@font-face {
-  font-family: "UI";
-  font-style: normal;
-  font-weight: 700;
-  font-display: block;
-  ascent-override: 95%;
-  descent-override: 22.5%;
-  line-gap-override: 0%;
-  src: local("Oswald Bold"), local("Oswald-Bold"), local("Barlow Condensed Bold"), local("BarlowCondensed-Bold"), local("Arial Narrow Bold"), local("Arial Narrow"), local("Arial");
-}
-@font-face {
-  font-family: "UI";
-  font-style: normal;
-  font-weight: 400;
-  font-display: block;
-  ascent-override: 95%;
-  descent-override: 22.5%;
-  line-gap-override: 0%;
-  src: local("Oswald Regular"), local("Oswald-Regular"), local("Barlow Condensed"), local("BarlowCondensed-Regular"), local("Arial Narrow"), local("Arial");
-}
-
 :root {
-  --cream: #F7F5EF;
-  --white: #F9F9F9;
-  --ink: rgba(255, 255, 255, .88);
-  --accent: #D6523A;
-  --s: min(100vh / 800px, 100vw / 716px);
-  --cover: max(100vw / 1280, 100vh / 800);
+  --navy: #101F35;
+  --gold: #C9A45C;
+  --graphite: #111318;
+  --cream: #F5F3ED;
+  --white: #F5F3ED;
+  --ink: rgba(245, 243, 237, .9);
+  --accent: var(--gold);
+  --bg: var(--navy);
+  --bg-2: var(--graphite);
+  --line: rgba(245, 243, 237, .14);
+  --muted: rgba(245, 243, 237, .66);
+  --dark-ink: var(--graphite);
+  --dark-muted: rgba(17, 19, 24, .7);
+  --dark-line: rgba(17, 19, 24, .14);
+  --display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --text: "Lato", Arial, sans-serif;
+  --wrap: 1240px;
+  --gutter: clamp(20px, 5vw, 64px);
+  --nav-h: 76px;
 }
 
-html, body { height: 100%; }
-html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
 body {
   margin: 0;
-  background: #0a0b0c;
-  overflow: hidden;
-  font-kerning: none;
-  font-variant-ligatures: none;
-  font-feature-settings: normal;
+  background: var(--bg);
+  color: var(--cream);
+  font: 400 16.5px/1.65 var(--text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: geometricPrecision;
+  overflow-x: hidden;
 }
+img, video, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
-.frame {
+.wrap { width: 100%; max-width: calc(var(--wrap) + 2 * var(--gutter)); margin: 0 auto; padding: 0 var(--gutter); }
+
+/* ---------- Navegação ---------- */
+.nav {
   position: fixed;
-  inset: 0;
+  inset: 0 0 auto;
+  z-index: 50;
+  height: var(--nav-h);
+  transition: background-color .35s ease, border-color .35s ease, backdrop-filter .35s ease;
+  border-bottom: 1px solid transparent;
+}
+.nav.is-solid {
+  background: rgba(16, 31, 53, .9);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-color: var(--line);
+}
+.nav .wrap { height: 100%; display: flex; align-items: center; gap: 40px; }
+.brand { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+.brand img { width: 36px; height: 36px; }
+.brand-name { display: flex; flex-direction: column; line-height: 1; }
+.brand-name strong { font: 700 25px/1 var(--display); letter-spacing: .03em; }
+.brand-name small { font: 700 8.5px/1 var(--text); letter-spacing: .28em; text-transform: uppercase; color: var(--muted); margin-top: 5px; }
+.nav-links { display: flex; gap: 32px; margin: 0 0 0 auto; padding: 0; list-style: none; }
+.nav-links a {
+  position: relative;
+  font: 700 11px/1 var(--text);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(245, 243, 237, .82);
+  padding: 8px 0;
+  transition: color .2s ease;
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .3s ease;
+}
+.nav-links a:hover { color: var(--cream); }
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-menu { display: none; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 46px;
+  padding: 0 24px;
+  font: 700 11.5px/1 var(--text);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border: 1px solid var(--accent);
+  transition: background-color .25s ease, color .25s ease, border-color .25s ease;
+}
+.btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+.btn-outline { color: var(--cream); }
+.btn-outline:hover { background: var(--gold); color: var(--navy); }
+.btn-solid { background: var(--gold); color: var(--navy); }
+.btn-solid:hover { background: transparent; color: var(--gold); }
+.btn-lg { height: 56px; padding: 0 32px; font-size: 12.5px; }
+
+/* ---------- Hero ---------- */
+.frame {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
   overflow: hidden;
-  background: #0a0b0c;
+  background: var(--bg);
 }
 
 .bg {
@@ -73,184 +134,104 @@ body {
   inset: 0;
   width: 100%;
   height: 100%;
+  max-width: none;
   object-fit: cover;
-  object-position: center;
-  background: #0a0b0c;
+  object-position: center 40%;
+  background: var(--bg);
 }
 
 .tint {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(to bottom,
-    rgba(0, 0, 0, 0.118) 0%,
-    rgba(0, 0, 0, 0.092) 11%,
-    rgba(0, 0, 0, 0.083) 20%,
-    rgba(0, 0, 0, 0.079) 29%,
-    rgba(0, 0, 0, 0.014) 37.5%,
-    rgba(0, 0, 0, 0.016) 46%,
-    rgba(0, 0, 0, 0.043) 55%,
-    rgba(0, 0, 0, 0.058) 64%,
-    rgba(0, 0, 0, 0.062) 73%,
-    rgba(0, 0, 0, 0.080) 81%,
-    rgba(0, 0, 0, 0.090) 90%,
-    rgba(0, 0, 0, 0.095) 100%);
+  background:
+    linear-gradient(90deg,
+      rgba(16, 31, 53, .86) 0%,
+      rgba(16, 31, 53, .62) 38%,
+      rgba(16, 31, 53, .18) 70%,
+      rgba(16, 31, 53, .08) 100%),
+    linear-gradient(to bottom,
+      rgba(16, 31, 53, .70) 0%,
+      rgba(16, 31, 53, .18) 22%,
+      rgba(16, 31, 53, .10) 60%,
+      rgba(16, 31, 53, .80) 100%);
 }
 
 .stage {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 1280px;
-  height: 800px;
-  margin: -400px 0 0 -640px;
-  transform: scale(var(--s));
-  transform-origin: 50% 50%;
-  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: calc(var(--nav-h) + clamp(40px, 10vh, 120px));
+  padding-bottom: clamp(32px, 6vh, 64px);
 }
 
 .eyebrow {
-  position: absolute;
-  left: 0;
-  top: 67.8px;
-  width: 1280px;
-  margin: 0;
-  font: 700 7.4px/7.4px "UI", system-ui, sans-serif;
-  word-spacing: 0.522px;
-  text-align: center;
+  margin: 0 0 clamp(18px, 2.4vh, 28px);
+  font: 700 11.5px/1.5 var(--text);
+  letter-spacing: .26em;
   text-transform: uppercase;
-  color: var(--cream);
+  color: var(--gold);
   text-shadow: 0 1px 3px rgba(0, 0, 0, .45);
-  letter-spacing: 2.252px;
-  text-indent: 2.252px;
-}
-.eyebrow span {
-  position: relative;
-  display: block;
-  left: -0.9px;
 }
 
 .headline {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 1280px;
   margin: 0;
-  font: 800 61.74px/61.74px "Display", system-ui, sans-serif;
-  word-spacing: 2.691px;
-  text-align: center;
-  text-transform: uppercase;
+  font: 600 clamp(44px, 6.3vw, 98px)/1.02 var(--display);
+  letter-spacing: -.012em;
   color: var(--cream);
-  text-shadow: 0 15px 36px rgba(0, 0, 0, 0.50);
+  text-shadow: 0 12px 32px rgba(0, 0, 0, .45);
 }
-.headline span {
-  position: absolute;
-  left: 0;
-  width: 1280px;
-  display: block;
-  white-space: nowrap;
-}
-.headline .hl1 { top: 83.62px; letter-spacing: -0.075px; left: 0.45px; text-indent: -0.075px; }
-.headline .hl2 { top: 137.02px; letter-spacing: -1.237px; text-indent: -1.237px; }
-.headline .hl3 { top: 187.97px; letter-spacing: -0.237px; left: 1.8px; text-indent: -0.237px; }
-.headline .hl4 { top: 247.92px; letter-spacing: -0.487px; left: 1.35px; text-indent: -0.487px; }
+.headline span { display: block; }
+.headline em { font-style: italic; font-weight: 500; color: var(--gold); }
 
-.mark {
-  position: absolute;
-  left: 549.5px;
-  top: 493.6px;
-  width: 52px;
-  height: 52px;
-  overflow: visible;
-  display: block;
+.features {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(28px, 4vw, 56px);
+  max-width: 780px;
+  margin-top: clamp(32px, 5vh, 56px);
+  padding-top: clamp(24px, 3.4vh, 32px);
+  border-top: 1px solid rgba(201, 164, 92, .55);
 }
-
 .feature { margin: 0; }
-.f-left {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 748.5px;
-  text-align: right;
-}
-.f-right {
-  position: absolute;
-  top: 0;
-  left: 748.5px;
-  right: 0;
-  text-align: left;
-}
-
-.feature .icon { display: block; overflow: visible; }
-.f-left .icon {
-  position: absolute;
-  right: -4.5px;
-  top: 549.5px;
-  width: 35px;
-  height: 34px;
-}
-.f-right .icon {
-  position: absolute;
-  left: -3px;
-  top: 547.5px;
-  width: 35px;
-  height: 38px;
-}
-
-.feature h2,
-.feature p { margin: 0; width: max-content; }
+.feature .icon { display: block; width: 34px; height: 36px; margin-bottom: 16px; overflow: visible; }
 .feature h2 {
-  position: absolute;
-  top: 617.68px;
-  font: 700 19.57px/20px "UI", system-ui, sans-serif;
-  word-spacing: 1.838px;
-  text-transform: uppercase;
-  color: var(--white);
+  margin: 0 0 10px;
+  font: 600 clamp(22px, 1.9vw, 27px)/1.1 var(--display);
+  color: var(--cream);
   text-shadow: 0 1px 4px rgba(0, 0, 0, .4);
 }
-.f-left h2 { right: 0; }
-.f-right h2 { left: 0; }
 .feature p {
-  position: absolute;
-  top: 681.9px;
-  font: 400 12.28px/15.1px "UI", system-ui, sans-serif;
-  word-spacing: -0.194px;
+  margin: 0;
+  max-width: 340px;
+  font-size: 15px;
+  line-height: 1.55;
   color: var(--ink);
   text-shadow: 0 1px 3px rgba(0, 0, 0, .35);
 }
-.f-left p { right: 12px; }
-.f-right p { left: 12px; }
 
-.feature h2 span,
-.feature p span {
-  position: relative;
-  display: block;
-  white-space: nowrap;
-}
-.f-left .t1 { letter-spacing: -0.109px; }
-.f-left .t2 { letter-spacing: 0.246px; }
-.f-right .t1 { letter-spacing: -0.354px; left: -0.9px; }
-.f-right .t2 { letter-spacing: -0.154px; }
-.f-left .b1 { letter-spacing: -0.097px; left: 0.9px; }
-.f-left .b2 { letter-spacing: -0.271px; left: 1.8px; }
-.f-left .b3 { letter-spacing: -0.161px; left: 0.9px; }
-.f-right .b1 { letter-spacing: -0.247px; left: -0.9px; }
-.f-right .b2 { letter-spacing: -0.15px; left: -0.9px; }
-.f-right .b3 { letter-spacing: -0.247px; left: -0.9px; }
+.hero-cta { margin-top: clamp(28px, 4.4vh, 48px); align-self: flex-start; }
+.hero-cta svg { width: 18px; height: 18px; transition: transform .25s ease; }
+.hero-cta:hover svg { transform: translateX(4px); }
 
 @media (prefers-reduced-motion: no-preference) {
+  .nav { animation: riseIn 0.6s cubic-bezier(.33, .9, .35, 1) 0.1s both; }
   .eyebrow { animation: riseIn 0.55s cubic-bezier(.33, .9, .35, 1) 0.15s both; }
   .headline span { animation: lineIn 0.9s cubic-bezier(.16, 1, .3, 1) both; }
   .headline .hl1 { animation-delay: 0.28s; }
-  .headline .hl2 { animation-delay: 0.37s; }
-  .headline .hl3 { animation-delay: 0.46s; }
-  .headline .hl4 { animation-delay: 0.55s; }
-  .mark {
-    transform-origin: 50% 50%;
-    animation: markIn 0.7s cubic-bezier(.2, .9, .25, 1) 0.72s both;
-  }
-  .f-left { animation: blockInL 0.75s cubic-bezier(.16, 1, .3, 1) 0.82s both; }
-  .f-right { animation: blockInR 0.75s cubic-bezier(.16, 1, .3, 1) 0.90s both; }
+  .headline .hl2 { animation-delay: 0.40s; }
+  .f-left { animation: blockInL 0.75s cubic-bezier(.16, 1, .3, 1) 0.62s both; }
+  .f-right { animation: blockInL 0.75s cubic-bezier(.16, 1, .3, 1) 0.72s both; }
+  .hero-cta { animation: riseIn 0.6s cubic-bezier(.33, .9, .35, 1) 0.86s both; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .9s cubic-bezier(.16, 1, .3, 1), transform .9s cubic-bezier(.16, 1, .3, 1); }
+  .reveal.is-in { opacity: 1; transform: none; }
+  .reveal-d1 { transition-delay: .08s; }
+  .reveal-d2 { transition-delay: .16s; }
+  .reveal-d3 { transition-delay: .24s; }
+  .reveal-d4 { transition-delay: .32s; }
 
   @keyframes riseIn {
     from { opacity: 0; transform: translateY(6px); }
@@ -262,309 +243,389 @@ body {
     90% { clip-path: inset(0% -30% -100% -30%); }
     100% { opacity: 1; transform: none; clip-path: inset(-80% -30% -100% -30%); }
   }
-  @keyframes markIn {
-    from { opacity: 0; transform: scale(.88); }
-    to { opacity: 1; transform: none; }
-  }
   @keyframes blockInL {
     from { opacity: 0; transform: translate(-12px, 8px); }
     to { opacity: 1; transform: none; }
   }
-  @keyframes blockInR {
-    from { opacity: 0; transform: translate(12px, 8px); }
-    to { opacity: 1; transform: none; }
-  }
-}
-
-@media (min-width: 610px) and (max-aspect-ratio: 1/1) {
-  :root {
-    --u: min(100vw / 768, 100vh / 1024);
-    --rail: clamp(120px, calc(var(--cover) * 219), 26vw);
-  }
-  .stage {
-    inset: 0;
-    width: auto;
-    height: auto;
-    margin: 0;
-    transform: none;
-    display: grid;
-    grid-template-columns: 1fr var(--rail) 1fr;
-    grid-template-rows: auto auto 1fr auto auto minmax(0, .38fr);
-    padding: calc(46 * var(--u)) clamp(24px, 5.2vw, 72px) calc(24 * var(--u));
-  }
-  .eyebrow,
-  .headline,
-  .feature,
-  .feature h2,
-  .feature p,
-  .feature .icon {
-    position: static;
-    top: auto;
-    right: auto;
-    left: auto;
-    bottom: auto;
-  }
-  .eyebrow {
-    grid-area: 1 / 1 / 2 / -1;
-    width: auto;
-    font-size: calc(11 * var(--u));
-    line-height: 1;
-    letter-spacing: .304em;
-    text-indent: .304em;
-    word-spacing: .07em;
-    margin-bottom: calc(20 * var(--u));
-  }
-  .eyebrow span { left: auto; }
-  .headline {
-    grid-area: 2 / 1 / 3 / -1;
-    width: auto;
-    font-size: calc(84 * var(--u));
-    line-height: .92;
-    word-spacing: .0436em;
-  }
-  .headline .hl1,
-  .headline .hl2,
-  .headline .hl3,
-  .headline .hl4 {
-    position: static;
-    left: auto;
-    top: auto;
-    width: auto;
-    letter-spacing: -.012em;
-    text-indent: 0;
-  }
-  .mark {
-    position: relative;
-    grid-area: 4 / 1 / 5 / -1;
-    justify-self: center;
-    left: auto;
-    top: auto;
-    right: 5%;
-    width: calc(64 * var(--u));
-    height: calc(64 * var(--u));
-    margin: 0 0 calc(16 * var(--u));
-  }
-  .f-left { grid-area: 5 / 1 / 6 / 2; text-align: right; min-width: 0; }
-  .f-right { grid-area: 5 / 3 / 6 / 4; text-align: left; min-width: 0; }
-  .feature .icon {
-    display: block;
-    width: calc(42 * var(--u));
-    height: calc(46 * var(--u));
-    margin-bottom: calc(14 * var(--u));
-  }
-  .f-left .icon { margin-left: auto; margin-right: calc(-4.5 * var(--u)); }
-  .f-right .icon { margin-right: auto; margin-left: calc(-3 * var(--u)); }
-  .feature h2,
-  .feature p { width: auto; }
-  .feature h2 {
-    font-size: calc(22 * var(--u));
-    line-height: 1.08;
-    word-spacing: .094em;
-    margin-bottom: calc(12 * var(--u));
-  }
-  .feature p {
-    font-size: calc(14.5 * var(--u));
-    line-height: 1.34;
-    word-spacing: -.016em;
-    max-width: calc(310 * var(--u));
-  }
-  .f-left p { margin-left: auto; margin-right: calc(10 * var(--u)); }
-  .f-right p { margin-right: auto; margin-left: calc(10 * var(--u)); }
-  .f-left .t1,
-  .f-left .t2,
-  .f-right .t1,
-  .f-right .t2 {
-    white-space: normal;
-    letter-spacing: -.018em;
-    left: 0;
-  }
-  .f-left .b1,
-  .f-left .b2,
-  .f-left .b3,
-  .f-right .b1,
-  .f-right .b2,
-  .f-right .b3 {
-    display: inline;
-    white-space: normal;
-    letter-spacing: -.02em;
-    left: 0;
-  }
 }
 
 @media (max-width: 609px) {
-  .frame { height: 100vh; height: 100dvh; }
-  :root { --u: min(100vw / 390, 100vh / 780); }
-  @supports (height: 100dvh) {
-    :root { --u: min(100vw / 390, 100dvh / 780); }
+  :root { --nav-h: 64px; }
+  .stage { padding-top: calc(var(--nav-h) + 36px); }
+  .features { grid-template-columns: 1fr; gap: 24px; }
+  .feature .icon { width: 28px; height: 30px; margin-bottom: 12px; }
+  .hero-cta { width: 100%; }
+}
+
+/* ---------- Seções ---------- */
+.section { position: relative; padding: clamp(88px, 11vw, 152px) 0; }
+.section-light { background: var(--cream); color: var(--dark-ink); }
+.section-light .h2 { color: var(--navy); }
+.section-dark-2 { background: var(--bg-2); }
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 28px;
+  font: 700 11px/1 var(--text);
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.section-light .label { color: var(--navy); }
+.section-light .label::before { background: var(--gold); }
+.label::before { content: ""; width: 32px; height: 1px; background: currentColor; }
+.label b { font-weight: 700; color: inherit; }
+
+.h2 {
+  margin: 0;
+  font: 500 clamp(40px, 5.6vw, 74px)/1.02 var(--display);
+  letter-spacing: -.01em;
+}
+.lead { font-size: clamp(17px, 1.5vw, 19px); line-height: 1.65; }
+.muted { color: var(--muted); }
+.section-light .muted { color: var(--dark-muted); }
+
+.section-head {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 48px;
+  align-items: end;
+  margin-bottom: clamp(56px, 7vw, 88px);
+}
+.section-head > p { margin: 0; max-width: 440px; }
+
+/* Quem somos */
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(40px, 7vw, 112px);
+  align-items: start;
+}
+.about-media { position: relative; }
+.about-media img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
+.about-media figcaption {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 14px 18px;
+  background: var(--navy);
+  color: var(--cream);
+  border-top: 2px solid var(--gold);
+  font: 700 10.5px/1 var(--text);
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+.about-body .h2 { margin-bottom: 40px; }
+.about-body p { margin: 0 0 20px; max-width: 600px; }
+.mission {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 24px;
+  margin-top: 44px;
+  padding-top: 28px;
+  border-top: 1px solid var(--dark-line);
+}
+.mission h3 { margin: 0; font: 700 11px/1.9 var(--text); letter-spacing: .22em; text-transform: uppercase; color: var(--navy); }
+.mission p { margin: 0; }
+.quote {
+  margin: clamp(72px, 9vw, 120px) 0 0;
+  padding: clamp(40px, 5vw, 64px) 0 0;
+  border-top: 1px solid var(--dark-line);
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(40px, 7vw, 112px);
+}
+.quote span { font: 700 11px/1.9 var(--text); letter-spacing: .24em; text-transform: uppercase; color: var(--dark-muted); }
+.quote blockquote {
+  margin: 0;
+  font: 500 clamp(32px, 3.8vw, 52px)/1.12 var(--display);
+  color: var(--navy);
+}
+.quote blockquote em { font-style: italic; }
+
+/* Serviços */
+.services { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+.service {
+  position: relative;
+  display: grid;
+  grid-template-columns: 80px minmax(0, 5fr) minmax(0, 6fr) 40px;
+  gap: 32px;
+  align-items: start;
+  padding: 36px 0;
+  border-bottom: 1px solid var(--line);
+}
+.service::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .5s cubic-bezier(.16, 1, .3, 1);
+}
+.service:hover::before { transform: scaleX(1); }
+.service-num { font: 600 18px/1.7 var(--display); letter-spacing: .06em; color: var(--gold); }
+.service h3 { margin: 0; font: 600 clamp(25px, 2.5vw, 33px)/1.12 var(--display); transition: color .3s ease; }
+.service p { margin: 4px 0 0; color: var(--muted); }
+.service-arrow { width: 22px; height: 22px; margin-top: 8px; justify-self: end; color: var(--muted); transition: color .3s ease, transform .3s ease; }
+.service:hover h3 { color: var(--accent); }
+.service:hover .service-arrow { color: var(--accent); transform: translate(3px, -3px); }
+
+/* Diferenciais */
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+.pillar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 64px;
+  min-height: 300px;
+  padding: 36px 32px 40px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  transition: background-color .35s ease;
+}
+.pillar:hover { background: rgba(245, 243, 237, .03); }
+.pillar-top { display: flex; justify-content: space-between; align-items: flex-start; }
+.pillar-top span { font: 600 18px/1 var(--display); letter-spacing: .06em; color: var(--muted); }
+.pillar svg { width: 44px; height: 44px; color: var(--accent); }
+.pillar h3 { margin: 0; font: 600 clamp(24px, 2.1vw, 29px)/1.15 var(--display); }
+
+/* Processo */
+.process {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(40px, 7vw, 112px);
+  align-items: stretch;
+}
+.process-media img { width: 100%; height: 100%; min-height: 420px; object-fit: cover; }
+.process-body .h2 { margin-bottom: 56px; }
+.steps { margin: 0; padding: 0; list-style: none; counter-reset: step; }
+.step {
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  gap: 24px;
+  align-items: baseline;
+  padding: 28px 0;
+  border-top: 1px solid var(--dark-line);
+}
+.step:last-child { border-bottom: 1px solid var(--dark-line); }
+.step-num { font: 600 48px/1 var(--display); color: var(--gold); }
+.step p { margin: 0; font: 600 clamp(22px, 2vw, 27px)/1.25 var(--display); color: var(--navy); }
+
+/* Contato */
+.contact { position: relative; overflow: hidden; }
+.contact-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  opacity: .32;
+}
+.contact::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(16, 31, 53, .97) 0%, rgba(16, 31, 53, .86) 55%, rgba(16, 31, 53, .64) 100%);
+}
+.contact .wrap { position: relative; z-index: 2; }
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(48px, 7vw, 112px);
+  align-items: end;
+}
+.contact .h2 { font-size: clamp(42px, 6vw, 82px); margin-bottom: 28px; }
+.contact .lead { margin: 0 0 44px; max-width: 520px; }
+.contact-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+.contact-list li { border-bottom: 1px solid var(--line); }
+.contact-list a {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 16px;
+  align-items: baseline;
+  padding: 22px 0;
+  transition: color .25s ease;
+}
+.contact-list a:hover { color: var(--gold); }
+.contact-list small { font: 700 10.5px/1 var(--text); letter-spacing: .22em; text-transform: uppercase; color: var(--muted); }
+.contact-list span { font: 600 clamp(22px, 2vw, 26px)/1.2 var(--display); word-break: break-word; }
+.social { display: flex; gap: 12px; margin-top: 32px; }
+.social a {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  transition: border-color .25s ease, color .25s ease;
+}
+.social a:hover { border-color: var(--gold); color: var(--gold); }
+.social svg { width: 18px; height: 18px; }
+.signoff {
+  margin: clamp(72px, 9vw, 120px) 0 0;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+  font: 500 clamp(32px, 4.4vw, 58px)/1.05 var(--display);
+  letter-spacing: -.01em;
+}
+.signoff em { font-style: italic; color: var(--gold); }
+
+/* Rodapé */
+.footer { padding: 40px 0; background: var(--graphite); border-top: 1px solid var(--line); }
+.footer .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.footer p { margin: 0; font: 700 10.5px/1.6 var(--text); letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 1080px) {
+  .nav-links { gap: 22px; }
+  .nav-cta { display: none; }
+  .pillars { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 900px) {
+  .nav .wrap { gap: 16px; }
+  .nav-links {
+    position: fixed;
+    inset: var(--nav-h) 0 auto;
+    flex-direction: column;
+    gap: 0;
+    padding: 8px var(--gutter) 28px;
+    background: rgba(16, 31, 53, .98);
+    border-bottom: 1px solid var(--line);
+    transform: translateY(-8px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .25s ease, transform .25s ease, visibility .25s;
   }
-  .stage {
-    inset: 0;
-    width: auto;
-    height: auto;
-    margin: 0;
-    transform: none;
+  .nav.is-open { background: rgba(16, 31, 53, .98); border-color: var(--line); }
+  .nav.is-open .nav-links { opacity: 1; visibility: visible; transform: none; }
+  .nav-links a { display: block; padding: 18px 0; font-size: 12.5px; border-bottom: 1px solid var(--line); }
+  .nav-links a::after { display: none; }
+  .nav-menu {
     display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: auto auto 1fr auto auto auto minmax(0, .3fr);
-    padding: calc(30 * var(--u)) max(calc(22 * var(--u)), env(safe-area-inset-right)) max(calc(32 * var(--u)), env(safe-area-inset-bottom)) max(calc(22 * var(--u)), env(safe-area-inset-left));
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin-left: auto;
+    padding: 0;
+    background: none;
+    border: 1px solid var(--line);
+    color: var(--cream);
+    cursor: pointer;
   }
-  .eyebrow,
-  .headline,
-  .feature,
-  .feature h2,
-  .feature p,
-  .feature .icon {
-    position: static;
-    top: auto;
-    right: auto;
-    left: auto;
-    bottom: auto;
-  }
-  .eyebrow {
-    grid-row: 1;
-    width: auto;
-    font-size: clamp(8px, calc(9.5 * var(--u)), 11px);
-    line-height: 1;
-    letter-spacing: .304em;
-    text-indent: .304em;
-    word-spacing: .07em;
-    margin-bottom: calc(16 * var(--u));
-  }
-  .eyebrow span { left: auto; }
-  .headline {
-    grid-row: 2;
-    width: auto;
-    font-size: clamp(26px, min(11.6vw, calc(52 * var(--u))), 64px);
-    line-height: .92;
-    word-spacing: .0436em;
-  }
-  .headline .hl1,
-  .headline .hl2,
-  .headline .hl3,
-  .headline .hl4 {
-    position: static;
-    left: auto;
-    top: auto;
-    width: auto;
-    letter-spacing: -.012em;
-    text-indent: 0;
-  }
-  .mark {
-    position: relative;
-    grid-row: 4;
-    justify-self: center;
-    left: auto;
-    top: auto;
-    right: 5%;
-    width: clamp(38px, calc(46 * var(--u)), 54px);
-    height: clamp(38px, calc(46 * var(--u)), 54px);
-    margin: 0 0 calc(18 * var(--u));
-  }
-  .f-left {
-    grid-row: 5;
-    text-align: right;
-    min-width: 0;
-    margin-bottom: calc(26 * var(--u));
-  }
-  .f-right {
-    grid-row: 6;
-    text-align: left;
-    min-width: 0;
-  }
-  .feature .icon {
+  .nav-menu span, .nav-menu span::before, .nav-menu span::after {
     display: block;
-    width: clamp(26px, calc(34 * var(--u)), 40px);
-    height: clamp(28px, calc(37 * var(--u)), 43px);
-    margin-bottom: calc(12 * var(--u));
+    width: 18px;
+    height: 1.5px;
+    background: currentColor;
+    transition: transform .25s ease, background-color .25s ease;
   }
-  .f-left .icon { margin-left: auto; margin-right: calc(-4 * var(--u)); }
-  .f-right .icon { margin-right: auto; margin-left: calc(-3 * var(--u)); }
-  .feature h2,
-  .feature p { width: auto; }
-  .feature h2 {
-    font-size: clamp(15px, calc(17 * var(--u)), 20px);
-    line-height: 1.08;
-    word-spacing: .094em;
-    margin-bottom: calc(10 * var(--u));
-  }
-  .feature p {
-    font-size: clamp(11.5px, calc(13.5 * var(--u)), 14.5px);
-    line-height: 1.36;
-    word-spacing: -.016em;
-    max-width: calc(320 * var(--u));
-  }
-  .f-left p { margin-left: auto; }
-  .f-right p { margin-right: auto; }
-  .f-left .t1,
-  .f-left .t2,
-  .f-right .t1,
-  .f-right .t2 {
-    white-space: normal;
-    letter-spacing: -.018em;
-    left: 0;
-  }
-  .f-left .b1,
-  .f-left .b2,
-  .f-left .b3,
-  .f-right .b1,
-  .f-right .b2,
-  .f-right .b3 {
-    display: inline;
-    white-space: normal;
-    letter-spacing: -.02em;
-    left: 0;
-  }
+  .nav-menu span { position: relative; }
+  .nav-menu span::before, .nav-menu span::after { content: ""; position: absolute; left: 0; }
+  .nav-menu span::before { top: -6px; }
+  .nav-menu span::after { top: 6px; }
+  .nav.is-open .nav-menu span { background: transparent; }
+  .nav.is-open .nav-menu span::before { transform: translateY(6px) rotate(45deg); }
+  .nav.is-open .nav-menu span::after { transform: translateY(-6px) rotate(-45deg); }
+
+  .section-head,
+  .about,
+  .quote,
+  .process,
+  .contact-grid { grid-template-columns: 1fr; }
+  .section-head { gap: 24px; }
+  .about-media img { aspect-ratio: 4 / 3; }
+  .process-media { order: 2; }
+  .process-media img { min-height: 0; aspect-ratio: 4 / 3; height: auto; }
+  .service { grid-template-columns: 56px 1fr 28px; gap: 8px 20px; }
+  .service p { grid-column: 2 / 3; }
+  .service-arrow { grid-row: 1; grid-column: 3; }
+}
+
+@media (max-width: 609px) {
+  .brand-name small { display: none; }
+  .pillars { grid-template-columns: 1fr; }
+  .pillar { min-height: 0; gap: 40px; padding: 28px 24px 32px; }
+  .mission { grid-template-columns: 1fr; gap: 8px; }
+  .service { grid-template-columns: 1fr 28px; padding: 28px 0; }
+  .service-num { grid-column: 1; grid-row: 1; line-height: 1; }
+  .service h3 { grid-column: 1; grid-row: 2; }
+  .service p { grid-column: 1 / -1; grid-row: 3; }
+  .service-arrow { grid-row: 1 / 3; }
+  .step { grid-template-columns: 64px 1fr; gap: 16px; }
+  .step-num { font-size: 36px; }
+  .contact-list a { grid-template-columns: 1fr; gap: 8px; }
+  .btn-lg { width: 100%; }
+  .footer .wrap { flex-direction: column; align-items: flex-start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 }
 </style>
 </head>
 <body>
-<div class="frame">
-  <video class="bg" autoplay muted loop playsinline disablepictureinpicture aria-label="Aerial view of a container freight train crossing black coal terrain" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261005_115944_095d91d4-030f-4e82-b42b-a388c0816d24.mp4"></video>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="GC&amp;V Comércio Exterior, início">
+      <img src="assets/logo.svg" alt="" width="36" height="36">
+      <span class="brand-name"><strong>GC&amp;V</strong><small>Comércio Exterior</small></span>
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#quem-somos">Quem somos</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#diferenciais">Diferenciais</a></li>
+      <li><a href="#processo">Processo</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <a class="btn btn-outline nav-cta" href="https://wa.me/5531985847729?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20uma%20cota%C3%A7%C3%A3o." target="_blank" rel="noopener">Solicitar cotação</a>
+    <button class="nav-menu" id="nav-menu" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-links"><span></span></button>
+  </div>
+</header>
+
+<div class="frame" id="inicio">
+  <video class="bg" autoplay muted loop playsinline disablepictureinpicture poster="assets/hero-poster.jpg" aria-label="Navio porta-contêineres chegando ao porto ao pôr do sol" src="assets/hero.mp4"></video>
   <div class="tint"></div>
-  <main class="stage">
-    <p class="eyebrow"><span>WHY US</span></p>
+  <main class="stage wrap">
+    <p class="eyebrow">Assessoria e despacho aduaneiro</p>
     <h1 class="headline">
-      <span class="hl1">LOGISTICS</span>
-      <span class="hl2">THAT WORKS</span>
-      <span class="hl3">AS HARD AS</span>
-      <span class="hl4">YOU DO.</span>
+      <span class="hl1">Conectando negócios ao</span>
+      <span class="hl2">mercado <em>internacional.</em></span>
     </h1>
-    <svg class="mark" viewBox="0 0 52 52" fill="none" aria-hidden="true">
-      <circle cx="26" cy="26" r="23" stroke="#D6523A" stroke-width="1.6" stroke-dasharray="98.3 46.3" transform="rotate(2.5 26 26)"/>
-      <g fill="none" stroke="#D6523A" stroke-width="1.6" stroke-linecap="round">
-        <circle cx="26.5" cy="26.1" r="2.3"/>
-        <path d="M28.9 27.6C31.6 29 32.9 31.2 31.8 33.3 30.7 35.4 27.2 36.1 24.2 35.1"/>
-      </g>
-    </svg>
-    <section class="feature f-left">
+    <div class="features">
+      <section class="feature f-left">
       <svg class="icon" viewBox="0 0 35 34" fill="none" aria-hidden="true">
         <defs>
           <clipPath id="gclip">
             <circle cx="17.5" cy="17" r="9.80"/>
           </clipPath>
         </defs>
-        <circle cx="17.5" cy="17" r="16.5" stroke="#F9F9F9" stroke-width="1.9" stroke-dasharray="3.6 3"/>
-        <circle cx="17.5" cy="17" r="9.80" fill="#F9F9F9"/>
-        <path stroke="#101215" stroke-width="0.90" clip-path="url(#gclip)" d="M11.90 7.20 V26.80 M17.5 7.20 V26.80 M23.10 7.20 V26.80 M7.70 11.40 H27.30 M7.70 17 H27.30 M7.70 22.60 H27.30"/>
+        <circle cx="17.5" cy="17" r="16.5" stroke="#F5F3ED" stroke-width="1.9" stroke-dasharray="3.6 3"/>
+        <circle cx="17.5" cy="17" r="9.80" fill="#F5F3ED"/>
+        <path stroke="#101F35" stroke-width="0.90" clip-path="url(#gclip)" d="M11.90 7.20 V26.80 M17.5 7.20 V26.80 M23.10 7.20 V26.80 M7.70 11.40 H27.30 M7.70 17 H27.30 M7.70 22.60 H27.30"/>
       </svg>
-      <h2>
-        <span class="t1">One point of</span>
-        <span class="t2">contact</span>
-      </h2>
-      <p>
-        <span class="b1">No more chasing multiple vendors. One</span>
-        <span class="b2">team manages your entire end-o-end flow</span>
-        <span class="b3">origin to destination.</span>
-      </p>
-    </section>
-    <section class="feature f-right">
+        <h2>Importação e exportação</h2>
+        <p>Suporte em todas as etapas, da documentação às exigências legais e à liberação das mercadorias.</p>
+      </section>
+      <section class="feature f-right">
       <svg class="icon" viewBox="0 0 35 38" fill="none" aria-hidden="true">
-        <g fill="#F9F9F9">
+        <g fill="#F5F3ED">
           <rect x="0.5" y="0.5" width="17" height="9.6" rx="0.5"/>
           <rect x="10.5" y="13.5" width="13.5" height="10.9" rx="0.5"/>
           <rect x="17.5" y="28.3" width="17" height="9.7" rx="0.5"/>
         </g>
-        <g fill="#101215">
+        <g fill="#101F35">
           <rect x="2.50" y="2.50" width="1.10" height="1.90"/>
           <rect x="5.60" y="2.50" width="1.10" height="1.90"/>
           <rect x="8.70" y="2.50" width="1.10" height="1.90"/>
@@ -595,17 +656,227 @@ body {
           <rect x="31.90" y="34.40" width="1.10" height="1.90"/>
         </g>
       </svg>
-      <h2>
-        <span class="t1">Full supply chain</span>
-        <span class="t2">visibility</span>
-      </h2>
-      <p>
-        <span class="b1">Track your freight in real time and get</span>
-        <span class="b2">proactive updates before issues become</span>
-        <span class="b3">delays.</span>
-      </p>
-    </section>
+        <h2>Despacho e assessoria aduaneira</h2>
+        <p>Acompanhamento junto aos órgãos competentes, com responsabilidade, transparência e atendimento personalizado.</p>
+      </section>
+    </div>
+    <a class="btn btn-solid btn-lg hero-cta" href="https://wa.me/5531985847729?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20uma%20cota%C3%A7%C3%A3o." target="_blank" rel="noopener">
+      Solicitar cotação
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
+    </a>
   </main>
 </div>
+
+<!-- 01 Quem somos -->
+<section class="section section-light" id="quem-somos">
+  <div class="wrap">
+    <div class="about">
+      <figure class="about-media reveal" style="margin:0">
+        <img src="assets/foto-quem-somos.jpg" alt="Navio porta-contêineres em aproximação ao porto" width="720" height="960" loading="lazy">
+        <figcaption>Desde a origem até a liberação</figcaption>
+      </figure>
+      <div class="about-body">
+        <p class="label reveal"><b>01</b> Quem somos</p>
+        <h2 class="h2 reveal reveal-d1">Experiência, confiança e compromisso.</h2>
+        <p class="lead reveal reveal-d2">A <strong>GC&amp;V Comércio Exterior</strong> atua na prestação de serviços de assessoria e despacho aduaneiro, oferecendo suporte às empresas que realizam operações de comércio exterior internacional.</p>
+        <p class="muted reveal reveal-d2">Nosso propósito é simplificar os procedimentos aduaneiros, orientar nossos clientes e contribuir para operações mais organizadas, seguras e eficientes.</p>
+        <div class="mission reveal reveal-d3">
+          <h3>Nossa missão</h3>
+          <p>Prestar serviços de despacho aduaneiro, desembaraço e assessoria em comércio exterior com excelência técnica, organização e atendimento próximo, apoiando decisões responsáveis em cada etapa.</p>
+        </div>
+      </div>
+    </div>
+    <div class="quote reveal">
+      <span>Nosso compromisso</span>
+      <blockquote>Mais que serviços, somos <em>parceiros no crescimento</em> do seu negócio.</blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- 02 Serviços -->
+<section class="section" id="servicos">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="label reveal"><b>02</b> Nossos serviços</p>
+        <h2 class="h2 reveal reveal-d1">Soluções para sua operação internacional.</h2>
+      </div>
+      <p class="muted reveal reveal-d2">Do planejamento documental à liberação da carga, cada etapa conduzida com rigor técnico e atenção às exigências aduaneiras.</p>
+    </div>
+    <ul class="services">
+      <li class="service reveal">
+        <span class="service-num">01</span>
+        <h3>Assessoria aduaneira</h3>
+        <p>Orientação e suporte técnico nos procedimentos do comércio exterior, auxiliando na organização documental e no cumprimento das exigências aduaneiras.</p>
+        <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+      </li>
+      <li class="service reveal">
+        <span class="service-num">02</span>
+        <h3>Despacho aduaneiro</h3>
+        <p>Acompanhamento dos procedimentos de despacho aduaneiro de mercadorias, desde a preparação documental até a liberação junto aos órgãos competentes.</p>
+        <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+      </li>
+      <li class="service reveal">
+        <span class="service-num">03</span>
+        <h3>Desembaraço de importação</h3>
+        <p>Suporte em todas as etapas do processo aduaneiro de importação, com atenção à documentação, às exigências legais e aos procedimentos para a liberação das mercadorias.</p>
+        <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+      </li>
+      <li class="service reveal">
+        <span class="service-num">04</span>
+        <h3>Desembaraço de exportação</h3>
+        <p>Acompanhamento dos procedimentos aduaneiros de exportação, contribuindo para a organização e a regularidade das operações internacionais.</p>
+        <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+      </li>
+      <li class="service reveal">
+        <span class="service-num">05</span>
+        <h3>Consultoria em comércio exterior</h3>
+        <p>Apoio técnico para esclarecer dúvidas, identificar exigências e orientar decisões relacionadas às operações de importação e exportação.</p>
+        <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- 03 Diferenciais -->
+<section class="section section-dark-2" id="diferenciais">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="label reveal"><b>03</b> Nossos diferenciais</p>
+        <h2 class="h2 reveal reveal-d1">Seu negócio merece atenção em cada etapa.</h2>
+      </div>
+    </div>
+    <div class="pillars">
+      <article class="pillar reveal">
+        <div class="pillar-top">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M24 4l16 6v12c0 10-7 18-16 22C15 40 8 32 8 22V10l16-6z"/><path d="M17 24l5 5 9-10" stroke-linecap="round"/></svg>
+          <span>01</span>
+        </div>
+        <h3>Segurança e responsabilidade</h3>
+      </article>
+      <article class="pillar reveal reveal-d1">
+        <div class="pillar-top">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M6 10h36v22H20l-9 7v-7H6V10z"/><path d="M15 19h18M15 25h11" stroke-linecap="round"/></svg>
+          <span>02</span>
+        </div>
+        <h3>Comunicação clara e transparente</h3>
+      </article>
+      <article class="pillar reveal reveal-d2">
+        <div class="pillar-top">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><rect x="10" y="7" width="28" height="35"/><path d="M18 4h12v6H18z"/><path d="M16 20l3 3 5-5M16 32l3 3 5-5M28 21h5M28 33h5" stroke-linecap="round"/></svg>
+          <span>03</span>
+        </div>
+        <h3>Acompanhamento dos processos</h3>
+      </article>
+      <article class="pillar reveal reveal-d3">
+        <div class="pillar-top">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="15" r="7"/><path d="M9 42c1.5-8.5 7.5-14 15-14s13.5 5.5 15 14" stroke-linecap="round"/></svg>
+          <span>04</span>
+        </div>
+        <h3>Atendimento personalizado</h3>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 04 Processo -->
+<section class="section section-light" id="processo">
+  <div class="wrap">
+    <div class="process">
+      <div class="process-media reveal">
+        <img src="assets/foto-processo.jpg" alt="Navio porta-contêineres navegando em direção ao terminal portuário" width="720" height="1000" loading="lazy">
+      </div>
+      <div class="process-body">
+        <p class="label reveal"><b>04</b> Como trabalhamos</p>
+        <h2 class="h2 reveal reveal-d1">Do primeiro contato à conclusão do serviço.</h2>
+        <ol class="steps">
+          <li class="step reveal"><span class="step-num">01</span><p>Entendimento da necessidade do cliente</p></li>
+          <li class="step reveal reveal-d1"><span class="step-num">02</span><p>Análise das informações e documentos</p></li>
+          <li class="step reveal reveal-d2"><span class="step-num">03</span><p>Orientação e execução dos procedimentos contratados</p></li>
+          <li class="step reveal reveal-d3"><span class="step-num">04</span><p>Acompanhamento até a conclusão do serviço</p></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 Contato -->
+<section class="section contact" id="contato">
+  <img class="contact-bg" src="assets/foto-contato.jpg" alt="" width="720" height="540" loading="lazy">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <p class="label reveal"><b>05</b> Contato</p>
+        <h2 class="h2 reveal reveal-d1">Vamos conectar sua empresa ao mercado internacional?</h2>
+        <p class="lead muted reveal reveal-d2">Solicite uma cotação personalizada e conheça nossas soluções em comércio exterior.</p>
+        <a class="btn btn-solid btn-lg reveal reveal-d3" href="https://wa.me/5531985847729?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20uma%20cota%C3%A7%C3%A3o." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 004.74 1.21c5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 01-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
+          Falar no WhatsApp
+        </a>
+      </div>
+      <div class="reveal reveal-d2">
+        <ul class="contact-list">
+          <li><a href="https://wa.me/5531985847729" target="_blank" rel="noopener"><small>Telefone</small><span>(31) 98584-7729</span></a></li>
+          <li><a href="mailto:comexgcv@gmail.com"><small>E-mail</small><span>comexgcv@gmail.com</span></a></li>
+        </ul>
+        <div class="social">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.01 5 2.5 2.5 0 01.01-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.6 8.65 22 11.1 22 14.3V21h-4v-5.9c0-1.4-.03-3.2-1.95-3.2-1.95 0-2.25 1.52-2.25 3.1V21h-4V9z"/></svg></a>
+          <a href="https://wa.me/5531985847729" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 004.74 1.21c5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 01-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <p class="signoff reveal">Juntos, vamos <em>mais longe.</em></p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="GC&amp;V Comércio Exterior, voltar ao início">
+      <img src="assets/logo.svg" alt="" width="36" height="36">
+      <span class="brand-name"><strong>GC&amp;V</strong><small>Comércio Exterior</small></span>
+    </a>
+    <p>Conectando negócios ao mundo</p>
+    <p>&copy; <span id="year">2026</span> GC&amp;V Comércio Exterior</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var nav = document.getElementById('nav');
+  var menu = document.getElementById('nav-menu');
+  var links = document.getElementById('nav-links');
+
+  function onScroll() { nav.classList.toggle('is-solid', window.scrollY > 24); }
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  function setMenu(open) {
+    nav.classList.toggle('is-open', open);
+    menu.setAttribute('aria-expanded', open);
+    menu.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+  }
+  menu.addEventListener('click', function () { setMenu(!nav.classList.contains('is-open')); });
+  links.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  var items = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    items.forEach(function (el) { el.classList.add('is-in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+  items.forEach(function (el) { io.observe(el); });
+})();
+</script>
 </body>
 </html>
