@@ -17,9 +17,9 @@ gtag('consent', 'default', {
 gtag('set', 'ads_data_redaction', true);
 gtag('set', 'url_passthrough', true);
 </script>
-<link rel="stylesheet" href="cookie-consent.css">
-<script src="cookie-consent.js"></script>
-<script src="track.js"></script>
+<link rel="preload" href="cookie-consent.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<script src="cookie-consent.js" defer></script>
+<script src="track.js" defer></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>GC&amp;V Comércio Exterior | Assessoria e Despacho Aduaneiro</title>
 <meta name="description" content="Assessoria aduaneira, despacho aduaneiro e desembaraço de importação e exportação. Conectando negócios ao mercado internacional.">
