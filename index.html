@@ -897,11 +897,17 @@ html:not(.js) .section-photo {
 </header>
 
 <div class="frame" id="inicio">
-  <video class="bg" id="hero-video" muted loop playsinline disablepictureinpicture preload="none" aria-hidden="true">
+  <video class="bg" id="hero-video" muted playsinline disablepictureinpicture preload="none" aria-hidden="true">
     <source data-src="assets/hero-desktop.webm" type='video/webm; codecs="av01.0.08M.08"' media="(min-aspect-ratio: 1/1)">
     <source data-src="assets/hero-desktop.mp4" type="video/mp4" media="(min-aspect-ratio: 1/1)">
     <source data-src="assets/hero.webm" type='video/webm; codecs="av01.0.05M.08"'>
     <source data-src="assets/hero.mp4" type="video/mp4">
+  </video>
+  <video class="bg" id="hero-video-2" muted playsinline disablepictureinpicture preload="none" aria-hidden="true">
+    <source data-src="assets/hero2-desktop.webm" type='video/webm; codecs="av01.0.08M.08"' media="(min-aspect-ratio: 1/1)">
+    <source data-src="assets/hero2-desktop.mp4" type="video/mp4" media="(min-aspect-ratio: 1/1)">
+    <source data-src="assets/hero2.webm" type='video/webm; codecs="av01.0.05M.08"'>
+    <source data-src="assets/hero2.mp4" type="video/mp4">
   </video>
   <div class="tint"></div>
   <main class="stage wrap">
@@ -1192,18 +1198,46 @@ html:not(.js) .section-photo {
   });
 })();
 
-// Vídeo do Hero: carrega só depois da página pronta, para não competir com o conteúdo inicial
+// Vídeos do Hero: o navio começa; ao terminar, entra o segundo vídeo e os dois se alternam.
+// Carregam só depois da página pronta, para não competir com o conteúdo inicial.
 (function () {
-  var video = document.getElementById('hero-video');
+  var videos = [document.getElementById('hero-video'), document.getElementById('hero-video-2')];
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var saveData = navigator.connection && navigator.connection.saveData;
-  if (!video || reduce || saveData) return;
+  if (!videos[0] || reduce || saveData) return;
+  var current = 0;
+  function load(v) {
+    if (v.dataset.loaded) return;
+    v.dataset.loaded = '1';
+    v.querySelectorAll('source').forEach(function (src) { src.src = src.dataset.src; });
+    v.load();
+  }
+  function play(v) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+  function show(i) {
+    var v = videos[i], other = videos[1 - i];
+    v.currentTime = 0;
+    play(v);
+    v.classList.add('is-playing');
+    other.classList.remove('is-playing');
+    setTimeout(function () { if (!other.classList.contains('is-playing')) other.pause(); }, 900);
+    current = i;
+  }
+  videos.forEach(function (v, i) {
+    v.addEventListener('ended', function () {
+      if (i !== current) return;
+      var next = videos[1 - i];
+      if (next.readyState >= 3) show(1 - i);
+      else { v.currentTime = 0; play(v); }
+    });
+  });
   function start() {
-    video.querySelectorAll('source').forEach(function (src) { src.src = src.dataset.src; });
-    video.addEventListener('playing', function () { video.classList.add('is-playing'); }, { once: true });
-    video.load();
-    var p = video.play();
-    if (p && p.catch) p.catch(function () {});
+    var first = videos[0];
+    load(first);
+    first.addEventListener('playing', function () {
+      first.classList.add('is-playing');
+      if (videos[1]) load(videos[1]);
+    }, { once: true });
+    play(first);
   }
   function idle() { ('requestIdleCallback' in window) ? requestIdleCallback(start, { timeout: 2500 }) : setTimeout(start, 800); }
   if (document.readyState === 'complete') idle(); else window.addEventListener('load', idle, { once: true });
