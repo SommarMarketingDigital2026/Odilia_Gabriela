@@ -120,13 +120,24 @@ a { color: inherit; text-decoration: none; }
 .btn-solid:hover { background: transparent; color: var(--gold); }
 .btn-lg { height: 56px; padding: 0 32px; font-size: 12.5px; }
 
-/* ---------- Hero ---------- */
+/* ---------- Hero + Quem somos (vídeo fixo) ---------- */
+.video-scope { position: relative; background: var(--bg); overflow: clip; }
+.video-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 0;
+  height: 100vh;
+  height: 100svh;
+  margin-bottom: -100vh;
+  margin-bottom: -100svh;
+  overflow: hidden;
+}
+
 .frame {
   position: relative;
+  z-index: 1;
   min-height: 100vh;
   min-height: 100svh;
-  overflow: hidden;
-  background: var(--bg);
 }
 
 .bg {
@@ -258,7 +269,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ---------- Seções ---------- */
-.section { position: relative; padding: clamp(88px, 11vw, 152px) 0; }
+.section { position: relative; padding: clamp(88px, 11vw, 152px) 0; background: var(--bg); }
 .section-light { background: var(--cream); color: var(--dark-ink); }
 .section-light .h2 { color: var(--navy); }
 .section-dark-2 { background: var(--bg-2); }
@@ -297,53 +308,41 @@ a { color: inherit; text-decoration: none; }
 .section-head > p { margin: 0; max-width: 440px; }
 
 /* Quem somos */
+.about-v {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding: clamp(96px, 14vh, 160px) 0;
+  background: linear-gradient(to bottom,
+    rgba(16, 31, 53, 0) 0%,
+    rgba(16, 31, 53, .42) 22%,
+    rgba(16, 31, 53, .5) 78%,
+    var(--navy) 100%);
+}
 .about {
   display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  gap: clamp(40px, 7vw, 112px);
-  align-items: start;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+  gap: clamp(48px, 8vw, 140px);
+  align-items: center;
 }
-.about-media { position: relative; }
-.about-media img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
-.about-media figcaption {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  padding: 14px 18px;
-  background: var(--navy);
-  color: var(--cream);
-  border-top: 2px solid var(--gold);
-  font: 700 10.5px/1 var(--text);
-  letter-spacing: .22em;
-  text-transform: uppercase;
-}
-.about-body .h2 { margin-bottom: 40px; }
-.about-body p { margin: 0 0 20px; max-width: 600px; }
-.mission {
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 24px;
-  margin-top: 44px;
-  padding-top: 28px;
-  border-top: 1px solid var(--dark-line);
-}
-.mission h3 { margin: 0; font: 700 11px/1.9 var(--text); letter-spacing: .22em; text-transform: uppercase; color: var(--navy); }
+.about-body .h2 { margin-bottom: 32px; }
+.about-body p { margin: 0 0 18px; max-width: 600px; color: var(--ink); text-shadow: 0 1px 3px rgba(0, 0, 0, .3); }
+.about-body strong { color: var(--cream); }
+.about-rule { width: 64px; height: 1px; margin: 36px 0 28px; border: 0; background: var(--gold); }
+.mission { display: flex; gap: 20px; align-items: flex-start; max-width: 580px; }
+.mission svg { width: 44px; height: 44px; flex-shrink: 0; color: var(--gold); }
 .mission p { margin: 0; }
-.quote {
-  margin: clamp(72px, 9vw, 120px) 0 0;
-  padding: clamp(40px, 5vw, 64px) 0 0;
-  border-top: 1px solid var(--dark-line);
-  display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  gap: clamp(40px, 7vw, 112px);
-}
-.quote span { font: 700 11px/1.9 var(--text); letter-spacing: .24em; text-transform: uppercase; color: var(--dark-muted); }
+.quote { margin: 0; }
 .quote blockquote {
   margin: 0;
-  font: 500 clamp(32px, 3.8vw, 52px)/1.12 var(--display);
-  color: var(--navy);
+  font: italic 500 clamp(30px, 3vw, 44px)/1.2 var(--display);
+  color: var(--cream);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, .35);
 }
-.quote blockquote em { font-style: italic; }
+.quote::after { content: ""; display: block; width: 56px; height: 1px; margin-top: 28px; background: var(--gold); }
 
 /* Serviços */
 .services { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
@@ -540,11 +539,9 @@ a { color: inherit; text-decoration: none; }
 
   .section-head,
   .about,
-  .quote,
   .process,
   .contact-grid { grid-template-columns: 1fr; }
   .section-head { gap: 24px; }
-  .about-media img { aspect-ratio: 4 / 3; }
   .process-media { order: 2; }
   .process-media img { min-height: 0; aspect-ratio: 4 / 3; height: auto; }
   .service { grid-template-columns: 56px 1fr 28px; gap: 8px 20px; }
@@ -556,7 +553,7 @@ a { color: inherit; text-decoration: none; }
   .brand-name small { display: none; }
   .pillars { grid-template-columns: 1fr; }
   .pillar { min-height: 0; gap: 40px; padding: 28px 24px 32px; }
-  .mission { grid-template-columns: 1fr; gap: 8px; }
+  .mission svg { width: 36px; height: 36px; }
   .service { grid-template-columns: 1fr 28px; padding: 28px 0; }
   .service-num { grid-column: 1; grid-row: 1; line-height: 1; }
   .service h3 { grid-column: 1; grid-row: 2; }
@@ -594,9 +591,13 @@ a { color: inherit; text-decoration: none; }
   </div>
 </header>
 
-<div class="frame" id="inicio">
+<div class="video-scope">
+<div class="video-sticky">
   <video class="bg" autoplay muted loop playsinline disablepictureinpicture poster="assets/hero-poster.jpg" aria-label="Navio porta-contêineres chegando ao porto ao pôr do sol" src="assets/hero.mp4"></video>
   <div class="tint"></div>
+</div>
+
+<div class="frame" id="inicio">
   <main class="stage wrap">
     <p class="eyebrow">Assessoria e despacho aduaneiro</p>
     <h1 class="headline">
@@ -668,30 +669,27 @@ a { color: inherit; text-decoration: none; }
 </div>
 
 <!-- 01 Quem somos -->
-<section class="section section-light" id="quem-somos">
+<section class="about-v" id="quem-somos">
   <div class="wrap">
     <div class="about">
-      <figure class="about-media reveal" style="margin:0">
-        <img src="assets/foto-quem-somos.jpg" alt="Navio porta-contêineres em aproximação ao porto" width="720" height="960" loading="lazy">
-        <figcaption>Desde a origem até a liberação</figcaption>
-      </figure>
       <div class="about-body">
         <p class="label reveal"><b>01</b> Quem somos</p>
-        <h2 class="h2 reveal reveal-d1">Experiência, confiança e compromisso.</h2>
-        <p class="lead reveal reveal-d2">A <strong>GC&amp;V Comércio Exterior</strong> atua na prestação de serviços de assessoria e despacho aduaneiro, oferecendo suporte às empresas que realizam operações de comércio exterior internacional.</p>
-        <p class="muted reveal reveal-d2">Nosso propósito é simplificar os procedimentos aduaneiros, orientar nossos clientes e contribuir para operações mais organizadas, seguras e eficientes.</p>
+        <h2 class="h2 reveal reveal-d1">Experiência, confiança<br>e compromisso.</h2>
+        <p class="lead reveal reveal-d2">A <strong>GC&amp;V Comércio Exterior</strong> atua na prestação de serviços de assessoria e despacho aduaneiro, oferecendo suporte às empresas que realizam operações de comércio internacional.</p>
+        <p class="lead reveal reveal-d2">Nosso propósito é simplificar os procedimentos aduaneiros, orientar nossos clientes e contribuir para operações mais organizadas, seguras e eficientes.</p>
+        <hr class="about-rule reveal reveal-d3">
         <div class="mission reveal reveal-d3">
-          <h3>Nossa missão</h3>
-          <p>Prestar serviços de despacho aduaneiro, desembaraço e assessoria em comércio exterior com excelência técnica, organização e atendimento próximo, apoiando decisões responsáveis em cada etapa.</p>
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="22" cy="26" r="18"/><circle cx="22" cy="26" r="11"/><circle cx="22" cy="26" r="3.5"/><path d="M22 26L40 8M34 8h6v6"/></svg>
+          <p><strong>Nossa missão</strong> é prestar serviços de despacho aduaneiro, desembaraço e assessoria em comércio exterior com excelência técnica, organização e atendimento próximo, apoiando decisões responsáveis em cada etapa.</p>
         </div>
       </div>
-    </div>
-    <div class="quote reveal">
-      <span>Nosso compromisso</span>
-      <blockquote>Mais que serviços, somos <em>parceiros no crescimento</em> do seu negócio.</blockquote>
+      <figure class="quote reveal reveal-d2">
+        <blockquote>“Mais que serviços, somos parceiros no crescimento do seu negócio.”</blockquote>
+      </figure>
     </div>
   </div>
 </section>
+</div>
 
 <!-- 02 Serviços -->
 <section class="section" id="servicos">
