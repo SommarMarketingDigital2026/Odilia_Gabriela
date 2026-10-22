@@ -12,7 +12,7 @@
 <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 <link rel="preload" as="video" type="video/mp4" href="assets/hero.mp4">
 <style>
 :root {
@@ -30,7 +30,7 @@
   --dark-ink: var(--graphite);
   --dark-muted: rgba(17, 19, 24, .7);
   --dark-line: rgba(17, 19, 24, .14);
-  --display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --display: "Anton", Impact, "Arial Narrow", sans-serif;
   --text: "Lato", Arial, sans-serif;
   --wrap: 1240px;
   --gutter: clamp(20px, 5vw, 64px);
@@ -44,6 +44,7 @@ body {
   background: var(--bg);
   color: var(--cream);
   font: 400 16.5px/1.65 var(--text);
+  font-synthesis: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -73,7 +74,7 @@ a { color: inherit; text-decoration: none; }
 .brand { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
 .brand img { width: 36px; height: 36px; }
 .brand-name { display: flex; flex-direction: column; line-height: 1; }
-.brand-name strong { font: 700 25px/1 var(--display); letter-spacing: .03em; }
+.brand-name strong { font: 400 23px/1 var(--display); letter-spacing: .04em; }
 .brand-name small { font: 700 8.5px/1 var(--text); letter-spacing: .28em; text-transform: uppercase; color: var(--muted); margin-top: 5px; }
 .nav-links { display: flex; gap: 32px; margin: 0 0 0 auto; padding: 0; list-style: none; }
 .nav-links a {
@@ -178,13 +179,14 @@ a { color: inherit; text-decoration: none; }
 
 .headline {
   margin: 0;
-  font: 600 clamp(44px, 6.3vw, 98px)/1.02 var(--display);
+  font: 400 clamp(42px, 6.4vw, 100px)/1.04 var(--display);
+  text-transform: uppercase;
   letter-spacing: -.012em;
   color: var(--cream);
   text-shadow: 0 12px 32px rgba(0, 0, 0, .45);
 }
 .headline span { display: block; }
-.headline em { font-style: italic; font-weight: 500; color: var(--gold); }
+.headline em { font-style: normal; color: var(--gold); }
 
 .features {
   display: grid;
@@ -199,7 +201,9 @@ a { color: inherit; text-decoration: none; }
 .feature .icon { display: block; width: 34px; height: 36px; margin-bottom: 16px; overflow: visible; }
 .feature h2 {
   margin: 0 0 10px;
-  font: 600 clamp(22px, 1.9vw, 27px)/1.1 var(--display);
+  font: 400 clamp(19px, 1.6vw, 23px)/1.15 var(--display);
+  letter-spacing: .01em;
+  text-transform: uppercase;
   color: var(--cream);
   text-shadow: 0 1px 4px rgba(0, 0, 0, .4);
 }
@@ -210,6 +214,17 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.55;
   color: var(--ink);
   text-shadow: 0 1px 3px rgba(0, 0, 0, .35);
+}
+
+.feature p,
+.about-body p,
+.mission p,
+.section-head > p,
+.service p,
+.contact .lead {
+  text-align: justify;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 }
 
 .hero-cta { margin-top: clamp(28px, 4.4vh, 48px); align-self: flex-start; }
@@ -252,6 +267,8 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 609px) {
   :root { --nav-h: 64px; }
   .stage { padding-top: calc(var(--nav-h) + 36px); }
+  .headline span { display: inline; animation: none; }
+  .headline { animation: riseIn 0.8s cubic-bezier(.16, 1, .3, 1) 0.28s both; }
   .features { grid-template-columns: 1fr; gap: 24px; }
   .feature .icon { width: 28px; height: 30px; margin-bottom: 12px; }
   .hero-cta { width: 100%; }
@@ -283,7 +300,8 @@ a { color: inherit; text-decoration: none; }
 
 .h2 {
   margin: 0;
-  font: 500 clamp(40px, 5.6vw, 74px)/1.02 var(--display);
+  font: 400 clamp(36px, 4.8vw, 66px)/1.05 var(--display);
+  text-transform: uppercase;
   letter-spacing: -.01em;
 }
 .lead { font-size: clamp(17px, 1.5vw, 19px); line-height: 1.65; }
@@ -348,7 +366,8 @@ a { color: inherit; text-decoration: none; }
 .quote { margin: 0; }
 .quote blockquote {
   margin: 0;
-  font: italic 500 clamp(30px, 3vw, 44px)/1.2 var(--display);
+  font: 400 clamp(26px, 2.5vw, 36px)/1.2 var(--display);
+  text-transform: uppercase;
   color: var(--cream);
   text-shadow: 0 2px 12px rgba(0, 0, 0, .35);
 }
@@ -376,8 +395,8 @@ a { color: inherit; text-decoration: none; }
   transition: transform .5s cubic-bezier(.16, 1, .3, 1);
 }
 .service:hover::before { transform: scaleX(1); }
-.service-num { font: 600 18px/1.7 var(--display); letter-spacing: .06em; color: var(--gold); }
-.service h3 { margin: 0; font: 600 clamp(25px, 2.5vw, 33px)/1.12 var(--display); transition: color .3s ease; }
+.service-num { font: 400 18px/1.7 var(--display); letter-spacing: .06em; color: var(--gold); }
+.service h3 { margin: 0; font: 400 clamp(21px, 2vw, 27px)/1.15 var(--display); letter-spacing: .01em; text-transform: uppercase; transition: color .3s ease; }
 .service p { margin: 4px 0 0; color: var(--muted); }
 .service-arrow { width: 22px; height: 22px; margin-top: 8px; justify-self: end; color: var(--muted); transition: color .3s ease, transform .3s ease; }
 .service:hover h3 { color: var(--accent); }
@@ -403,9 +422,9 @@ a { color: inherit; text-decoration: none; }
 }
 .pillar:hover { background: rgba(245, 243, 237, .03); }
 .pillar-top { display: flex; justify-content: space-between; align-items: flex-start; }
-.pillar-top span { font: 600 18px/1 var(--display); letter-spacing: .06em; color: var(--muted); }
+.pillar-top span { font: 400 18px/1 var(--display); letter-spacing: .06em; color: var(--muted); }
 .pillar svg { width: 44px; height: 44px; color: var(--accent); }
-.pillar h3 { margin: 0; font: 600 clamp(24px, 2.1vw, 29px)/1.15 var(--display); }
+.pillar h3 { margin: 0; font: 400 clamp(20px, 1.8vw, 25px)/1.15 var(--display); letter-spacing: .01em; text-transform: uppercase; }
 
 /* Processo */
 .process {
@@ -426,8 +445,8 @@ a { color: inherit; text-decoration: none; }
   border-top: 1px solid var(--dark-line);
 }
 .step:last-child { border-bottom: 1px solid var(--dark-line); }
-.step-num { font: 600 48px/1 var(--display); color: var(--gold); }
-.step p { margin: 0; font: 600 clamp(22px, 2vw, 27px)/1.25 var(--display); color: var(--navy); }
+.step-num { font: 400 46px/1 var(--display); color: var(--gold); }
+.step p { margin: 0; font: 400 clamp(18px, 1.7vw, 23px)/1.25 var(--display); letter-spacing: .01em; text-transform: uppercase; color: var(--navy); }
 
 /* Contato */
 .contact { position: relative; overflow: hidden; }
@@ -454,7 +473,7 @@ a { color: inherit; text-decoration: none; }
   gap: clamp(48px, 7vw, 112px);
   align-items: end;
 }
-.contact .h2 { font-size: clamp(42px, 6vw, 82px); margin-bottom: 28px; }
+.contact .h2 { font-size: clamp(38px, 5.2vw, 72px); margin-bottom: 28px; }
 .contact .lead { margin: 0 0 44px; max-width: 520px; }
 .contact-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
 .contact-list li { border-bottom: 1px solid var(--line); }
@@ -468,7 +487,7 @@ a { color: inherit; text-decoration: none; }
 }
 .contact-list a:hover { color: var(--gold); }
 .contact-list small { font: 700 10.5px/1 var(--text); letter-spacing: .22em; text-transform: uppercase; color: var(--muted); }
-.contact-list span { font: 600 clamp(22px, 2vw, 26px)/1.2 var(--display); word-break: break-word; }
+.contact-list span { font: 700 clamp(17px, 1.4vw, 19px)/1.3 var(--text); word-break: break-word; }
 .social { display: flex; gap: 12px; margin-top: 32px; }
 .social a {
   width: 46px;
@@ -484,10 +503,11 @@ a { color: inherit; text-decoration: none; }
   margin: clamp(72px, 9vw, 120px) 0 0;
   padding-top: 32px;
   border-top: 1px solid var(--line);
-  font: 500 clamp(32px, 4.4vw, 58px)/1.05 var(--display);
+  font: 400 clamp(30px, 4vw, 54px)/1.05 var(--display);
+  text-transform: uppercase;
   letter-spacing: -.01em;
 }
-.signoff em { font-style: italic; color: var(--gold); }
+.signoff em { font-style: normal; color: var(--gold); }
 
 /* Rodapé */
 .footer { padding: 40px 0; background: var(--graphite); }
@@ -580,6 +600,7 @@ a { color: inherit; text-decoration: none; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .headline { animation: none; }
 }
 </style>
 </head>
