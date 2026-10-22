@@ -382,33 +382,35 @@ a { color: inherit; text-decoration: none; }
 .quote::after { content: ""; display: block; width: 56px; height: 1px; margin-top: 28px; background: var(--gold); }
 
 /* Serviços */
-.services { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
-.service {
-  position: relative;
+.services {
   display: grid;
-  grid-template-columns: 80px minmax(0, 5fr) minmax(0, 6fr) 40px;
-  gap: 32px;
-  align-items: start;
-  padding: 36px 0;
-  border-bottom: 1px solid var(--line);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
-.service::before {
-  content: "";
-  position: absolute;
-  left: 0; right: 0; bottom: -1px;
-  height: 1px;
-  background: var(--accent);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform .5s cubic-bezier(.16, 1, .3, 1);
+.service {
+  display: flex;
+  flex-direction: column;
+  padding: 28px 22px 30px;
+  background: rgba(245, 243, 237, .03);
+  border: 1px solid rgba(201, 164, 92, .38);
+  border-radius: 10px;
+  transition: border-color .35s ease, background-color .35s ease, transform .35s cubic-bezier(.16, 1, .3, 1);
 }
-.service:hover::before { transform: scaleX(1); }
-.service-num { font: 400 18px/1.7 var(--display); letter-spacing: .06em; color: var(--gold); }
-.service h3 { margin: 0; font: 400 clamp(21px, 2vw, 27px)/1.15 var(--display); letter-spacing: .01em; text-transform: uppercase; transition: color .3s ease; }
-.service p { margin: 4px 0 0; color: var(--muted); }
-.service-arrow { width: 22px; height: 22px; margin-top: 8px; justify-self: end; color: var(--muted); transition: color .3s ease, transform .3s ease; }
-.service:hover h3 { color: var(--accent); }
-.service:hover .service-arrow { color: var(--accent); transform: translate(3px, -3px); }
+.service:hover { border-color: var(--gold); background: rgba(245, 243, 237, .05); transform: translateY(-4px); }
+.service-num {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font: 400 22px/1 var(--display);
+  letter-spacing: .04em;
+  color: var(--gold);
+}
+.service-num::after { content: ""; width: 28px; height: 1px; background: currentColor; opacity: .7; }
+.service h3 { margin: 22px 0 14px; font: 400 clamp(19px, 1.5vw, 22px)/1.22 var(--display); letter-spacing: .01em; text-transform: uppercase; }
+.service p { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--muted); text-align: left; }
 
 /* Diferenciais */
 .section-photo {
@@ -544,6 +546,7 @@ a { color: inherit; text-decoration: none; }
   .nav-links { gap: 22px; }
   .nav-cta { display: none; }
   .pillars { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .services { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 @media (max-width: 900px) {
@@ -599,9 +602,6 @@ a { color: inherit; text-decoration: none; }
   .section-head { gap: 24px; }
   .process-media { order: 2; }
   .process-media img { min-height: 0; aspect-ratio: 4 / 3; height: auto; }
-  .service { grid-template-columns: 56px 1fr 28px; gap: 8px 20px; }
-  .service p { grid-column: 2 / 3; }
-  .service-arrow { grid-row: 1; grid-column: 3; }
 }
 
 @media (max-width: 609px) {
@@ -612,11 +612,7 @@ a { color: inherit; text-decoration: none; }
   .mission svg { width: 36px; height: 36px; }
   .about-v::before { width: 100%; }
   .about-v::after { background: linear-gradient(to bottom, rgba(16, 31, 53, .9) 0%, rgba(16, 31, 53, .82) 60%, rgba(16, 31, 53, .7) 100%); }
-  .service { grid-template-columns: 1fr 28px; padding: 28px 0; }
-  .service-num { grid-column: 1; grid-row: 1; line-height: 1; }
-  .service h3 { grid-column: 1; grid-row: 2; }
-  .service p { grid-column: 1 / -1; grid-row: 3; }
-  .service-arrow { grid-row: 1 / 3; }
+  .services { grid-template-columns: 1fr; }
   .step { grid-template-columns: 64px 1fr; gap: 16px; }
   .step-num { font-size: 36px; }
   .contact-list a { grid-template-columns: 1fr; gap: 8px; }
@@ -760,31 +756,26 @@ a { color: inherit; text-decoration: none; }
         <span class="service-num">01</span>
         <h3>Assessoria aduaneira</h3>
         <p>Orientação e suporte técnico nos procedimentos do comércio exterior, auxiliando na organização documental e no cumprimento das exigências aduaneiras.</p>
-        <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
       </li>
       <li class="service reveal">
         <span class="service-num">02</span>
         <h3>Despacho aduaneiro</h3>
         <p>Acompanhamento dos procedimentos de despacho aduaneiro de mercadorias, desde a preparação documental até a liberação junto aos órgãos competentes.</p>
-        <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
       </li>
       <li class="service reveal">
         <span class="service-num">03</span>
         <h3>Desembaraço de importação</h3>
         <p>Suporte em todas as etapas do processo aduaneiro de importação, com atenção à documentação, às exigências legais e aos procedimentos para a liberação das mercadorias.</p>
-        <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
       </li>
       <li class="service reveal">
         <span class="service-num">04</span>
         <h3>Desembaraço de exportação</h3>
         <p>Acompanhamento dos procedimentos aduaneiros de exportação, contribuindo para a organização e a regularidade das operações internacionais.</p>
-        <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
       </li>
       <li class="service reveal">
         <span class="service-num">05</span>
         <h3>Consultoria em comércio exterior</h3>
         <p>Apoio técnico para esclarecer dúvidas, identificar exigências e orientar decisões relacionadas às operações de importação e exportação.</p>
-        <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
       </li>
     </ul>
   </div>
