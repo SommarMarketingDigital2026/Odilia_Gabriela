@@ -284,18 +284,61 @@ th {
 }
 #gerenciar-cookies { margin: 8px 0 20px; }
 
-.footer { padding: 40px 0; background: var(--graphite); border-top: 1px solid var(--gold); }
-.footer .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-.footer p { margin: 0; font: 700 10.5px/1.6 var(--text); letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
-.footer-legal {
-  flex: 1 0 100%;
+.footer { padding: clamp(56px, 7vw, 88px) 0 0; background: var(--graphite); border-top: 1px solid var(--gold); }
+.footer .wrap { display: block; }
+.footer-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 48px 40px;
+  padding-bottom: 48px;
+}
+.footer-tag {
+  margin: 22px 0 0;
+  max-width: 16rem;
+  font: 400 20px/1.25 var(--display);
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  color: var(--cream);
+}
+.footer-cnpj {
+  margin: 18px 0 0;
+  font: 700 13px/1.4 var(--text);
+  letter-spacing: .04em;
+  color: var(--muted);
+}
+.footer-label {
+  margin: 0 0 8px;
+  font: 700 11px/1 var(--text);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.footer-list { margin: 0; padding: 0; list-style: none; }
+.footer-list a {
   display: flex;
-  flex-direction: column;
-  gap: 14px;
-  padding-top: 20px;
+  align-items: center;
+  min-height: 44px;
+  font: 400 16px/1.35 var(--text);
+  color: rgba(245, 243, 237, .9);
+}
+.footer-list a:hover { color: var(--gold); }
+.footer-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 32px;
+  flex-wrap: wrap;
+  padding: 8px 0 22px;
   border-top: 1px solid var(--line);
 }
-.footer-links { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+.footer-bar p {
+  margin: 0;
+  font: 700 10.5px/1.6 var(--text);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.footer-links { display: flex; flex-wrap: wrap; gap: 4px 20px; }
 .footer-links a {
   display: inline-flex;
   align-items: center;
@@ -358,11 +401,14 @@ th {
   .nav.is-open .nav-menu span::before { transform: translateY(6px) rotate(45deg); }
   .nav.is-open .nav-menu span::after { transform: translateY(-6px) rotate(-45deg); }
   .toc ol { columns: 1; }
+  .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+  .footer-bar { align-items: flex-start; }
 }
 @media (max-width: 609px) {
   :root { --nav-h: 64px; }
-  .brand-name small { display: none; }
-  .footer .wrap { flex-direction: column; align-items: flex-start; }
+  .nav .brand-name small { display: none; }
+  .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+  .footer-bar { align-items: flex-start; }
   #gerenciar-cookies { width: 100%; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -470,7 +516,8 @@ th {
     <h2 id="controlador">Controlador dos dados</h2>
     <p>O controlador dos dados pessoais tratados por meio deste site é a <strong>GC&amp;V Comércio Exterior</strong>, nome com o qual o site se apresenta. A GC&amp;V presta serviços de assessoria e despacho aduaneiro a empresas que importam, exportam ou estruturam operações de comércio exterior, com prioridade para o mercado brasileiro.</p>
     <p>E-mail de contato: <a href="mailto:comexgcv@gmail.com">comexgcv@gmail.com</a>.</p>
-    <p class="note">CNPJ, registro profissional e endereço não aparecem no site. Por isso, não são informados nesta política.</p>
+    <p>CNPJ: 69.445.762/0001-06.</p>
+    <p class="note">Registro profissional e endereço não aparecem no site. Por isso, não são informados nesta política.</p>
 
     <h2 id="canal-do-titular">Canal do titular</h2>
     <p>Para assuntos de proteção de dados, inclusive pedidos relacionados aos seus direitos, escreva para <a href="mailto:comexgcv@gmail.com">comexgcv@gmail.com</a>.</p>
@@ -614,6 +661,7 @@ th {
 
     <h2 id="contato">Contato</h2>
     <p>GC&amp;V Comércio Exterior</p>
+    <p>CNPJ: 69.445.762/0001-06</p>
     <p>E-mail: <a href="mailto:comexgcv@gmail.com">comexgcv@gmail.com</a></p>
     <p>WhatsApp: <a href="https://wa.me/5531985847729?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20uma%20cota%C3%A7%C3%A3o." target="_blank" rel="noopener noreferrer">+55 31 98584-7729</a></p>
     <p><a href="index.html">Voltar à página inicial</a> · <a href="terms-of-use.html">Termos de uso</a></p>
@@ -625,13 +673,35 @@ th {
 
 <footer class="footer">
   <div class="wrap">
-    <a class="brand" href="index.html">
-      <img src="assets/logo.svg" alt="" width="36" height="36">
-      <span class="brand-name"><strong>GC&amp;V</strong><small>Comércio Exterior</small></span>
-    </a>
-    <p>Conectando negócios ao mundo</p>
-    <p>&copy; <span id="year">2026</span> GC&amp;V Comércio Exterior</p>
-    <div class="footer-legal">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <img src="assets/logo.svg" alt="" width="36" height="36">
+          <span class="brand-name"><strong>GC&amp;V</strong><small>Comércio Exterior</small></span>
+        </a>
+        <p class="footer-tag">Conectando negócios ao mundo</p>
+        <p class="footer-cnpj">CNPJ 69.445.762/0001-06</p>
+      </div>
+      <div>
+        <p class="footer-label">Contato</p>
+        <ul class="footer-list">
+          <li><a href="mailto:comexgcv@gmail.com">comexgcv@gmail.com</a></li>
+          <li><a href="https://wa.me/5531985847729?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20uma%20cota%C3%A7%C3%A3o." target="_blank" rel="noopener noreferrer">+55 31 98584-7729</a></li>
+        </ul>
+      </div>
+      <nav aria-label="Mapa do site">
+        <p class="footer-label">Navegação</p>
+        <ul class="footer-list">
+          <li><a href="index.html#quem-somos">Quem somos</a></li>
+          <li><a href="index.html#servicos">Serviços</a></li>
+          <li><a href="index.html#diferenciais">Diferenciais</a></li>
+          <li><a href="index.html#processo">Processo</a></li>
+          <li><a href="index.html#contato">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-bar">
+      <p>&copy; <span id="year">2026</span> GC&amp;V Comércio Exterior</p>
       <nav class="footer-links" aria-label="Documentos legais">
         <a href="privacy-policy.html">Política de Privacidade</a>
         <a href="terms-of-use.html">Termos de Uso</a>
