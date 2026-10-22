@@ -120,24 +120,13 @@ a { color: inherit; text-decoration: none; }
 .btn-solid:hover { background: transparent; color: var(--gold); }
 .btn-lg { height: 56px; padding: 0 32px; font-size: 12.5px; }
 
-/* ---------- Hero + Quem somos (vídeo fixo) ---------- */
-.video-scope { position: relative; background: var(--bg); overflow: clip; }
-.video-sticky {
-  position: sticky;
-  top: 0;
-  z-index: 0;
-  height: 100vh;
-  height: 100svh;
-  margin-bottom: -100vh;
-  margin-bottom: -100svh;
-  overflow: hidden;
-}
-
+/* ---------- Hero ---------- */
 .frame {
   position: relative;
-  z-index: 1;
   min-height: 100vh;
   min-height: 100svh;
+  overflow: hidden;
+  background: var(--bg);
 }
 
 .bg {
@@ -270,6 +259,9 @@ a { color: inherit; text-decoration: none; }
 
 /* ---------- Seções ---------- */
 .section { position: relative; padding: clamp(88px, 11vw, 152px) 0; background: var(--bg); }
+.about-v,
+.section,
+.footer { border-top: 1px solid var(--gold); }
 .section-light { background: var(--cream); color: var(--dark-ink); }
 .section-light .h2 { color: var(--navy); }
 .section-dark-2 { background: var(--bg-2); }
@@ -310,18 +302,36 @@ a { color: inherit; text-decoration: none; }
 /* Quem somos */
 .about-v {
   position: relative;
-  z-index: 1;
   min-height: 100vh;
   min-height: 100svh;
   display: flex;
   align-items: center;
   padding: clamp(96px, 14vh, 160px) 0;
-  background: linear-gradient(to bottom,
-    rgba(16, 31, 53, 0) 0%,
-    rgba(16, 31, 53, .42) 22%,
-    rgba(16, 31, 53, .5) 78%,
-    var(--navy) 100%);
+  background: var(--navy);
+  overflow: hidden;
 }
+.about-v::before,
+.about-v::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+.about-v::before {
+  width: 62%;
+  background: url("assets/foto-trem.jpg") center 58% / cover no-repeat;
+}
+.about-v::after {
+  left: 0;
+  background: linear-gradient(90deg,
+    var(--navy) 38%,
+    rgba(16, 31, 53, .82) 52%,
+    rgba(16, 31, 53, .5) 72%,
+    rgba(16, 31, 53, .42) 100%);
+}
+.about-v .wrap { position: relative; z-index: 1; }
 .about {
   display: grid;
   grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
@@ -480,7 +490,7 @@ a { color: inherit; text-decoration: none; }
 .signoff em { font-style: italic; color: var(--gold); }
 
 /* Rodapé */
-.footer { padding: 40px 0; background: var(--graphite); border-top: 1px solid var(--line); }
+.footer { padding: 40px 0; background: var(--graphite); }
 .footer .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
 .footer p { margin: 0; font: 700 10.5px/1.6 var(--text); letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
 
@@ -554,6 +564,8 @@ a { color: inherit; text-decoration: none; }
   .pillars { grid-template-columns: 1fr; }
   .pillar { min-height: 0; gap: 40px; padding: 28px 24px 32px; }
   .mission svg { width: 36px; height: 36px; }
+  .about-v::before { width: 100%; }
+  .about-v::after { background: linear-gradient(to bottom, rgba(16, 31, 53, .9) 0%, rgba(16, 31, 53, .82) 60%, rgba(16, 31, 53, .7) 100%); }
   .service { grid-template-columns: 1fr 28px; padding: 28px 0; }
   .service-num { grid-column: 1; grid-row: 1; line-height: 1; }
   .service h3 { grid-column: 1; grid-row: 2; }
@@ -591,13 +603,9 @@ a { color: inherit; text-decoration: none; }
   </div>
 </header>
 
-<div class="video-scope">
-<div class="video-sticky">
+<div class="frame" id="inicio">
   <video class="bg" autoplay muted loop playsinline disablepictureinpicture poster="assets/hero-poster.jpg" aria-label="Navio porta-contêineres chegando ao porto ao pôr do sol" src="assets/hero.mp4"></video>
   <div class="tint"></div>
-</div>
-
-<div class="frame" id="inicio">
   <main class="stage wrap">
     <p class="eyebrow">Assessoria e despacho aduaneiro</p>
     <h1 class="headline">
@@ -689,7 +697,6 @@ a { color: inherit; text-decoration: none; }
     </div>
   </div>
 </section>
-</div>
 
 <!-- 02 Serviços -->
 <section class="section" id="servicos">
