@@ -323,7 +323,8 @@ a { color: inherit; text-decoration: none; }
 .section-head > p { margin: 0; max-width: 440px; }
 .section-head--stack { display: block; container-type: inline-size; }
 .section-head--stack .h2 { font-size: calc(100cqw / 17.3); white-space: nowrap; }
-.section-head--stack > p { max-width: 640px; margin: clamp(24px, 3vw, 36px) auto 0; text-align: center; }
+.section-head--stack > p { max-width: none; margin: clamp(24px, 3vw, 36px) auto 0; text-align: center; }
+@media (min-width: 1040px) { .section-head--stack > p { white-space: nowrap; } }
 
 /* Quem somos */
 .about-v {
