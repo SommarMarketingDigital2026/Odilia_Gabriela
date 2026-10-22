@@ -10,13 +10,63 @@
 <meta property="og:description" content="Soluções em assessoria aduaneira, despacho aduaneiro e desembaraço de importação e exportação.">
 <meta property="og:image" content="assets/hero-poster.jpg">
 <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Lato:wght@400;700&display=swap" rel="stylesheet">
-<link rel="preload" as="video" type="video/mp4" href="assets/hero.mp4">
+<link rel="preload" href="assets/fonts/anton.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/lato-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/lato-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/hero-poster.avif" as="image" type="image/avif" fetchpriority="high">
 <style>
+@font-face {
+  font-family: "Anton";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/anton.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/lato-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/fonts/lato-700.woff2") format("woff2");
+}
+/* Fallbacks com métricas ajustadas para evitar deslocamento de layout na troca de fonte */
+@font-face {
+  font-family: "Anton Fallback";
+  src: local("Arial"), local("ArialMT"), local("Liberation Sans"), local("Helvetica");
+  size-adjust: 68.88%;
+  ascent-override: 170.76%;
+  descent-override: 47.78%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Lato Fallback";
+  font-weight: 400;
+  src: local("Arial"), local("ArialMT"), local("Liberation Sans"), local("Helvetica");
+  size-adjust: 96.09%;
+  ascent-override: 102.72%;
+  descent-override: 22.17%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Lato Fallback";
+  font-weight: 700;
+  src: local("Arial Bold"), local("Arial-BoldMT"), local("Liberation Sans Bold"), local("Helvetica Bold");
+  size-adjust: 91.82%;
+  ascent-override: 107.5%;
+  descent-override: 23.2%;
+  line-gap-override: 0%;
+}
+
 :root {
   --navy: #101F35;
+  --steel: #3F4F62;
   --gold: #C9A45C;
   --graphite: #111318;
   --cream: #F5F3ED;
@@ -30,8 +80,8 @@
   --dark-ink: var(--graphite);
   --dark-muted: rgba(17, 19, 24, .7);
   --dark-line: rgba(17, 19, 24, .14);
-  --display: "Anton", Impact, "Arial Narrow", sans-serif;
-  --text: "Lato", Arial, sans-serif;
+  --display: "Anton", "Anton Fallback", Impact, sans-serif;
+  --text: "Lato", "Lato Fallback", Arial, sans-serif;
   --wrap: 1240px;
   --gutter: clamp(20px, 5vw, 64px);
   --nav-h: 76px;
@@ -127,7 +177,8 @@ a { color: inherit; text-decoration: none; }
   min-height: 100vh;
   min-height: 100svh;
   overflow: hidden;
-  background: var(--bg);
+  background: var(--bg) url("assets/hero-poster.jpg") center 40% / cover no-repeat;
+  background-image: image-set(url("assets/hero-poster.avif") type("image/avif"), url("assets/hero-poster.webp") type("image/webp"), url("assets/hero-poster.jpg") type("image/jpeg"));
 }
 
 .bg {
@@ -138,8 +189,10 @@ a { color: inherit; text-decoration: none; }
   max-width: none;
   object-fit: cover;
   object-position: center 40%;
-  background: var(--bg);
+  opacity: 0;
+  transition: opacity .8s ease;
 }
+.bg.is-playing { opacity: 1; }
 
 .tint {
   position: absolute;
@@ -287,6 +340,7 @@ a { color: inherit; text-decoration: none; }
 .section-light { background: var(--cream); color: var(--dark-ink); }
 .section-light .h2 { color: var(--navy); }
 .section-dark-2 { background: var(--bg-2); }
+#servicos { background: var(--steel); }
 
 .label {
   display: flex;
@@ -348,7 +402,12 @@ a { color: inherit; text-decoration: none; }
 }
 .about-v::before {
   width: 62%;
-  background: url("assets/foto-trem.jpg") center 58% / cover no-repeat;
+  background: center 58% / cover no-repeat;
+}
+.about-v.bg-in::before,
+html:not(.js) .about-v::before {
+  background-image: url("assets/foto-trem.jpg");
+  background-image: image-set(url("assets/foto-trem.avif") type("image/avif"), url("assets/foto-trem.webp") type("image/webp"), url("assets/foto-trem.jpg") type("image/jpeg"));
 }
 .about-v::after {
   left: 0;
@@ -415,10 +474,13 @@ a { color: inherit; text-decoration: none; }
 
 /* Diferenciais */
 .section-photo {
-  background:
-    linear-gradient(rgba(0, 0, 0, .52), rgba(0, 0, 0, .52)),
-    url("assets/foto-aviao.jpg") center 42% / cover no-repeat,
-    var(--graphite);
+  background: var(--graphite) center 42% / cover no-repeat;
+  background-image: linear-gradient(rgba(0, 0, 0, .52), rgba(0, 0, 0, .52));
+}
+.section-photo.bg-in,
+html:not(.js) .section-photo {
+  background-image: linear-gradient(rgba(0, 0, 0, .52), rgba(0, 0, 0, .52)), url("assets/foto-aviao.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, .52), rgba(0, 0, 0, .52)), image-set(url("assets/foto-aviao.avif") type("image/avif"), url("assets/foto-aviao.webp") type("image/webp"), url("assets/foto-aviao.jpg") type("image/jpeg"));
 }
 .section-photo .h2 { text-shadow: 0 2px 18px rgba(0, 0, 0, .45); }
 .pillars {
@@ -631,7 +693,7 @@ a { color: inherit; text-decoration: none; }
 
 <header class="nav" id="nav">
   <div class="wrap">
-    <a class="brand" href="#inicio" aria-label="GC&amp;V Comércio Exterior, início">
+    <a class="brand" href="#inicio">
       <img src="assets/logo.svg" alt="" width="36" height="36">
       <span class="brand-name"><strong>GC&amp;V</strong><small>Comércio Exterior</small></span>
     </a>
@@ -648,7 +710,10 @@ a { color: inherit; text-decoration: none; }
 </header>
 
 <div class="frame" id="inicio">
-  <video class="bg" autoplay muted loop playsinline disablepictureinpicture poster="assets/hero-poster.jpg" aria-label="Navio porta-contêineres chegando ao porto ao pôr do sol" src="assets/hero.mp4"></video>
+  <video class="bg" id="hero-video" muted loop playsinline disablepictureinpicture preload="none" aria-hidden="true">
+    <source data-src="assets/hero.webm" type='video/webm; codecs="av01.0.05M.08"'>
+    <source data-src="assets/hero.mp4" type="video/mp4">
+  </video>
   <div class="tint"></div>
   <main class="stage wrap">
     <p class="eyebrow">Assessoria e despacho aduaneiro</p>
@@ -721,7 +786,7 @@ a { color: inherit; text-decoration: none; }
 </div>
 
 <!-- 01 Quem somos -->
-<section class="about-v" id="quem-somos">
+<section class="about-v lazy-bg" id="quem-somos">
   <div class="wrap">
     <div class="about">
       <div class="about-body">
@@ -783,7 +848,7 @@ a { color: inherit; text-decoration: none; }
 </section>
 
 <!-- 03 Diferenciais -->
-<section class="section section-photo" id="diferenciais">
+<section class="section section-photo lazy-bg" id="diferenciais">
   <div class="wrap">
     <div class="section-head">
       <div>
@@ -817,7 +882,11 @@ a { color: inherit; text-decoration: none; }
   <div class="wrap">
     <div class="process">
       <div class="process-media reveal">
-        <img src="assets/foto-processo.jpg" alt="Navio porta-contêineres navegando em direção ao terminal portuário" width="720" height="1000" loading="lazy">
+        <picture>
+          <source srcset="assets/foto-processo.avif" type="image/avif">
+          <source srcset="assets/foto-processo.webp" type="image/webp">
+          <img src="assets/foto-processo.jpg" alt="Navio porta-contêineres navegando em direção ao terminal portuário" width="720" height="1000" loading="lazy" decoding="async">
+        </picture>
       </div>
       <div class="process-body">
         <p class="label reveal"><b>04</b> Como trabalhamos</p>
@@ -835,7 +904,11 @@ a { color: inherit; text-decoration: none; }
 
 <!-- 05 Contato -->
 <section class="section contact" id="contato">
-  <img class="contact-bg" src="assets/foto-contato.jpg" alt="" width="720" height="540" loading="lazy">
+  <picture>
+    <source srcset="assets/foto-contato.avif" type="image/avif">
+    <source srcset="assets/foto-contato.webp" type="image/webp">
+    <img class="contact-bg" src="assets/foto-contato.jpg" alt="" width="720" height="540" loading="lazy" decoding="async">
+  </picture>
   <div class="wrap">
     <div class="contact-grid">
       <div>
@@ -865,7 +938,7 @@ a { color: inherit; text-decoration: none; }
 
 <footer class="footer">
   <div class="wrap">
-    <a class="brand" href="#inicio" aria-label="GC&amp;V Comércio Exterior, voltar ao início">
+    <a class="brand" href="#inicio">
       <img src="assets/logo.svg" alt="" width="36" height="36">
       <span class="brand-name"><strong>GC&amp;V</strong><small>Comércio Exterior</small></span>
     </a>
@@ -884,13 +957,42 @@ a { color: inherit; text-decoration: none; }
   });
 })();
 
+// Vídeo do Hero: carrega só depois da página pronta, para não competir com o conteúdo inicial
+(function () {
+  var video = document.getElementById('hero-video');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var saveData = navigator.connection && navigator.connection.saveData;
+  if (!video || reduce || saveData) return;
+  function start() {
+    video.querySelectorAll('source').forEach(function (src) { src.src = src.dataset.src; });
+    video.addEventListener('playing', function () { video.classList.add('is-playing'); }, { once: true });
+    video.load();
+    var p = video.play();
+    if (p && p.catch) p.catch(function () {});
+  }
+  function idle() { ('requestIdleCallback' in window) ? requestIdleCallback(start, { timeout: 2500 }) : setTimeout(start, 800); }
+  if (document.readyState === 'complete') idle(); else window.addEventListener('load', idle, { once: true });
+})();
+
+// Imagens de fundo das seções: carregam quando a seção se aproxima da tela
+(function () {
+  var els = document.querySelectorAll('.lazy-bg');
+  if (!('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('bg-in'); }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) { entry.target.classList.add('bg-in'); io.unobserve(entry.target); }
+    });
+  }, { rootMargin: '600px 0px' });
+  els.forEach(function (el) { io.observe(el); });
+})();
+
 (function () {
   var nav = document.getElementById('nav');
   var menu = document.getElementById('nav-menu');
   var links = document.getElementById('nav-links');
 
   function onScroll() { nav.classList.toggle('is-solid', window.scrollY > 24); }
-  onScroll();
+  requestAnimationFrame(onScroll);
   window.addEventListener('scroll', onScroll, { passive: true });
 
   function setMenu(open) {
